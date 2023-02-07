@@ -1,22 +1,22 @@
-import React, { useState } from 'react'
-import { useDispatch, useSelector } from "react-redux";
+import React from 'react'
 import '../styles/App.css';
-
-const LoginButton = () => {
-}
-
-const LogoutButton = () => {
-}
-
+import {useSelector,useDispatch} from "react-redux";
+import { onInputChange } from '../actions/index.js';
 const App = () => {
-  const loggedIn = useSelector((state) => state.auth.loggedIn)
+const myState = useSelector((state)=>state.tellZodiac);
+const dispatch =useDispatch();
 
   return (
     <div id="main">
-      {loggedIn
-        ? <LogoutButton />
-        : <LoginButton />
-      }
+      
+       <div>
+       <h1>Get your Zodiac </h1>
+        Enter Birthday month
+        <input id='input' onChange={(e)=>dispatch(onInputChange(e.target.value))}  /><br/>
+        Output Zodiac
+        <input id='output' value={myState} />
+       </div>
+
     </div>
   )
 }
